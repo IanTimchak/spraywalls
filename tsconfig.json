@@ -1,10 +1,10 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "types": ["jest"]
-  },
-  "include": ["App.tsx", "index.ts", "src", "__tests__", "jest.setup.ts"]
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "types": ["jest"]
+    },
+    "include": ["App.tsx", "index.ts", "src", "__tests__", "jest.setup.ts"]
 }
