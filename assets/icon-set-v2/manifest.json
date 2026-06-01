@@ -1,0 +1,22 @@
+{
+    "source": "D:\\Documents\\...WORK DOCU\\template\\assets\\spraywalls-app-icon-v2.png",
+    "source_size": [1254, 1254],
+    "note": "Regenerated clean slate from spraywalls-app-icon-v2.png with no corner cleanup or alpha manipulation except resizing and iOS RGB compositing.",
+    "expo_assets": {
+        "icon": "./assets/icon.png",
+        "favicon": "./assets/favicon.png",
+        "android_background": "./assets/android-icon-background.png",
+        "android_foreground": "./assets/android-icon-foreground.png",
+        "android_monochrome": "./assets/android-icon-monochrome.png",
+        "splash": "./assets/splash-icon.png"
+    },
+    "general_png_sizes": [16, 32, 48, 64, 128, 256, 512, 1024],
+    "ios_appiconset": "ios/AppIcon.appiconset",
+    "android_density_exports": {
+        "mipmap-mdpi": 48,
+        "mipmap-hdpi": 72,
+        "mipmap-xhdpi": 96,
+        "mipmap-xxhdpi": 144,
+        "mipmap-xxxhdpi": 192
+    }
+}

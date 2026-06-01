@@ -3,21 +3,49 @@ import { useEffect, useState } from 'react';
 import { getAuthClaims, onAuthStateChange } from '../api/authApi';
 import { JwtPayload } from '@supabase/supabase-js';
 
-export function useAuthSession() {
-    const [claims, setClaims] = useState<JwtPayload | null>(null);
+type AuthStatus = 'checking' | 'signed-in' | 'signed-out' | 'error';
+
+type AuthSession = {
+    status: AuthStatus;
+    claims: JwtPayload | null;
+    error: string | null;
+};
+
+export function useAuthSession(): AuthSession {
+    const [authSession, setAuthSession] = useState<AuthSession>({
+        status: 'checking',
+        claims: null,
+        error: null,
+    });
 
     useEffect(() => {
-        // Get initial auth claims when the hook mounts
-        getAuthClaims().then(({ data }) => {
-            setClaims(data?.claims ?? null);
-        });
+        async function refreshAuthClaims() {
+            const { data, error } = await getAuthClaims();
+
+            if (error) {
+                setAuthSession({
+                    status: 'error',
+                    claims: null,
+                    error: error.message,
+                });
+                return;
+            }
+
+            const claims = data?.claims ?? null;
+
+            setAuthSession({
+                status: claims ? 'signed-in' : 'signed-out',
+                claims,
+                error: null,
+            });
+        }
+
+        refreshAuthClaims();
 
         const {
             data: { subscription },
         } = onAuthStateChange(() => {
-            getAuthClaims().then(({ data }) => {
-                setClaims(data?.claims ?? null);
-            });
+            refreshAuthClaims();
         });
 
         return () => {
@@ -25,8 +53,5 @@ export function useAuthSession() {
         };
     }, []);
 
-    return {
-        claims,
-        isSignedIn: Boolean(claims),
-    };
+    return authSession;
 }

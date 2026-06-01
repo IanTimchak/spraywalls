@@ -7,20 +7,28 @@ import { colors, spacing } from '../shared/theme';
 
 // features
 import { AuthScreen } from '../features/auth/screens/AuthScreen';
-import { useAuthSession } from '../features/auth/hooks/useAuthSession';
+import { useAppStartup } from './hooks/useAppStartup';
 import { HomeScreen } from '../features/home/HomeScreen';
+import AppLoadingScreen from './components/AppLoadingScreen';
 
 export function AppRoot() {
-    const { claims, isSignedIn } = useAuthSession();
+    const startup = useAppStartup();
+    const auth = startup.auth;
 
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar style="dark" />
 
-            {isSignedIn ? (
+            {startup.status === 'starting' ? (
+                <AppLoadingScreen
+                    imageSrc={require('../../assets/android-icon-monochrome-spraywalls-v2.png')}
+                />
+            ) : startup.status === 'error' ? (
+                <Text>{auth.error}</Text>
+            ) : auth.status === 'signed-in' ? (
                 <>
                     <HomeScreen appName={appConfig.name} />
-                    {claims && <Text>Signed in user: {claims.sub}</Text>}
+                    {auth.claims && <Text>Signed in user: {auth.claims.sub}</Text>}
                 </>
             ) : (
                 <AuthScreen />

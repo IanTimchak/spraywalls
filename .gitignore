@@ -7,7 +7,9 @@ node_modules/
 .expo/
 dist/
 web-build/
+storybook-static/
 expo-env.d.ts
+coverage/
 
 # Native
 .kotlin/
@@ -28,6 +30,7 @@ expo.err.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+storybook-dev.*.log
 
 # macOS
 .DS_Store

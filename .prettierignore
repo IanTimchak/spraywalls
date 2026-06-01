@@ -3,4 +3,5 @@ node_modules
 dist
 coverage
 web-build
+storybook-static
 package-lock.json
