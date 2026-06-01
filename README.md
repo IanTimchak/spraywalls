@@ -170,5 +170,6 @@ Near-term product areas:
 
 See:
 
+- `docs/requirements.md`
 - `docs/architecture.md`
 - `docs/conventions.md`
