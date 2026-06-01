@@ -4,8 +4,13 @@
         "slug": "spraywalls",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/icon.png",
+        "icon": "./assets/icon-spraywalls-v2.png",
         "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./assets/splash-icon-spraywalls-v2.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#111820"
+        },
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.iantimchak.spraywalls",
@@ -15,15 +20,15 @@
         },
         "android": {
             "adaptiveIcon": {
-                "backgroundColor": "#E6F4FE",
-                "foregroundImage": "./assets/android-icon-foreground.png",
-                "backgroundImage": "./assets/android-icon-background.png",
-                "monochromeImage": "./assets/android-icon-monochrome.png"
+                "backgroundColor": "#111820",
+                "foregroundImage": "./assets/android-icon-foreground-spraywalls-v2.png",
+                "backgroundImage": "./assets/android-icon-background-spraywalls-v2.png",
+                "monochromeImage": "./assets/android-icon-monochrome-spraywalls-v2.png"
             },
             "predictiveBackGestureEnabled": false
         },
         "web": {
-            "favicon": "./assets/favicon.png"
+            "favicon": "./assets/favicon-spraywalls-v2.png"
         }
     }
 }
