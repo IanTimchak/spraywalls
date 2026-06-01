@@ -36,11 +36,9 @@ export function HomeScreen({ appName }: HomeScreenProps) {
 const styles = StyleSheet.create({
     header: {
         gap: spacing.sm,
-        paddingTop: spacing.xl,
     },
     kicker: {
         color: colors.accent,
-        paddingTop: spacing.xl,
         fontSize: typography.sizes.sm,
         fontWeight: '700',
         textTransform: 'uppercase',
