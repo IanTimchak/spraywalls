@@ -1,13 +1,17 @@
 {
     "expo": {
-        "name": "React Native Template",
-        "slug": "react-native-template",
+        "name": "SprayWalls",
+        "slug": "spraywalls",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
         "ios": {
-            "supportsTablet": true
+            "supportsTablet": true,
+            "bundleIdentifier": "com.iantimchak.spraywalls",
+            "infoPlist": {
+                "ITSAppUsesNonExemptEncryption": false
+            }
         },
         "android": {
             "adaptiveIcon": {
