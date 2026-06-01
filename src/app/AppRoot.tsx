@@ -1,48 +1,38 @@
+// src/app/AppRoot.tsx
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-//import { HomeScreen } from '../features/home/HomeScreen';
-import Auth from '../features/auth/components/AuthForm';
-import { supabase } from '../shared/api/supabase';
+import { appConfig } from '../config/appConfig';
 import { colors, spacing } from '../shared/theme';
-import { useEffect, useState } from 'react';
-import { JwtPayload } from '@supabase/supabase-js';
+
+// features
+import { AuthScreen } from '../features/auth/screens/AuthScreen';
+import { useAuthSession } from '../features/auth/hooks/useAuthSession';
+import { HomeScreen } from '../features/home/HomeScreen';
 
 export function AppRoot() {
-  const [claims, setClaims] = useState<JwtPayload | null>(null);
+    const { claims, isSignedIn } = useAuthSession();
 
-  useEffect(() => {
-    supabase.auth.getClaims().then(({ data }) => {
-      setClaims(data?.claims ?? null);
-    });
+    return (
+        <SafeAreaView style={styles.container}>
+            <StatusBar style="dark" />
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(() => {
-      supabase.auth.getClaims().then(({ data }) => {
-        setClaims(data?.claims ?? null);
-      });
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="dark" />
-      <Auth />
-      {claims && <Text>Signed in user: {claims.sub}</Text>}
-    </SafeAreaView>
-  );
+            {isSignedIn ? (
+                <>
+                    <HomeScreen appName={appConfig.name} />
+                    {claims && <Text>Signed in user: {claims.sub}</Text>}
+                </>
+            ) : (
+                <AuthScreen />
+            )}
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    paddingHorizontal: spacing.lg,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: colors.background,
+        paddingHorizontal: spacing.lg,
+    },
 });
