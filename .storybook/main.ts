@@ -27,6 +27,12 @@ const config: StorybookConfig = {
             'process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY': JSON.stringify(
                 process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? 'test-publishable-key',
             ),
+            'process.env.EXPO_PUBLIC_FEATURE_GOOGLE_AUTH': JSON.stringify(
+                process.env.EXPO_PUBLIC_FEATURE_GOOGLE_AUTH ?? 'false',
+            ),
+            'process.env.EXPO_PUBLIC_FEATURE_PASSWORD_RECOVERY': JSON.stringify(
+                process.env.EXPO_PUBLIC_FEATURE_PASSWORD_RECOVERY ?? 'false',
+            ),
         };
 
         return viteConfig;

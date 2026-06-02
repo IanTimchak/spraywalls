@@ -29,6 +29,7 @@
         },
         "web": {
             "favicon": "./assets/favicon-spraywalls-v2.png"
-        }
+        },
+        "plugins": ["expo-font"]
     }
 }
