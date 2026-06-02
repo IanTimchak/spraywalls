@@ -122,12 +122,7 @@ export default function AuthForm({
                     )}
 
                     {/* Sign In / Sign Up Button */}
-                    <View
-                        style={[
-                            styles.verticallySpaced,
-                            mode === 'signIn' ? styles.mt20 : styles.mt20,
-                        ]}
-                    >
+                    <View style={[styles.verticallySpaced, styles.mt20]}>
                         <TouchableOpacity
                             style={[styles.button, loading && styles.buttonDisabled]}
                             onPress={() =>
