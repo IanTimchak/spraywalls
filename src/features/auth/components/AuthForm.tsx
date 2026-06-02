@@ -93,7 +93,7 @@ export default function AuthForm({
                                 textContentType={mode === 'signIn' ? 'password' : 'newPassword'}
                                 style={styles.passwordInput}
                             />
-                            {password && (
+                            {password.length > 0 && (
                                 <TouchableOpacity
                                     onPress={() => setShowPassword(!showPassword)}
                                     accessibilityLabel={
