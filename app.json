@@ -1,37 +1,35 @@
 {
-  "expo": {
-    "name": "SprayWalls",
-    "slug": "spraywalls",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon-spraywalls-v2.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash-icon-spraywalls-v2.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#111820"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.iantimchak.spraywalls",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#111820",
-        "foregroundImage": "./assets/android-icon-foreground-spraywalls-v2.png",
-        "backgroundImage": "./assets/android-icon-background-spraywalls-v2.png",
-        "monochromeImage": "./assets/android-icon-monochrome-spraywalls-v2.png"
-      },
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "favicon": "./assets/favicon-spraywalls-v2.png"
-    },
-    "plugins": [
-      "expo-font"
-    ]
-  }
+    "expo": {
+        "name": "SprayWalls",
+        "slug": "spraywalls",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon-spraywalls-v2.png",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./assets/splash-icon-spraywalls-v2.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#111820"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.iantimchak.spraywalls",
+            "infoPlist": {
+                "ITSAppUsesNonExemptEncryption": false
+            }
+        },
+        "android": {
+            "adaptiveIcon": {
+                "backgroundColor": "#111820",
+                "foregroundImage": "./assets/android-icon-foreground-spraywalls-v2.png",
+                "backgroundImage": "./assets/android-icon-background-spraywalls-v2.png",
+                "monochromeImage": "./assets/android-icon-monochrome-spraywalls-v2.png"
+            },
+            "predictiveBackGestureEnabled": false
+        },
+        "web": {
+            "favicon": "./assets/favicon-spraywalls-v2.png"
+        },
+        "plugins": ["expo-font"]
+    }
 }
