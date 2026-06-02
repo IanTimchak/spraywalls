@@ -1,57 +1,58 @@
 {
-    "name": "react-native-template",
-    "version": "1.0.0",
-    "main": "index.ts",
-    "dependencies": {
-        "@react-native-async-storage/async-storage": "2.2.0",
-        "@rneui/themed": "^5.0.0",
-        "@supabase/supabase-js": "^2.106.2",
-        "expo": "~54.0.35",
-        "expo-status-bar": "~3.0.9",
-        "react": "19.1.0",
-        "react-dom": "19.1.0",
-        "react-native": "0.81.5",
-        "react-native-safe-area-context": "~5.6.0",
-        "react-native-url-polyfill": "^3.0.0",
-        "react-native-web": "^0.21.0"
-    },
-    "devDependencies": {
-        "@storybook/react-vite": "^10.4.1",
-        "@testing-library/react-native": "^13.3.3",
-        "@types/jest": "^29.5.14",
-        "@types/react": "~19.1.10",
-        "@vitejs/plugin-react": "^6.0.2",
-        "cross-env": "^10.1.0",
-        "eslint": "^9.39.4",
-        "eslint-config-expo": "^10.0.0",
-        "jest-expo": "^54.0.17",
-        "prettier": "^3.8.3",
-        "react-test-renderer": "19.1.0",
-        "storybook": "^10.4.1",
-        "typescript": "~5.9.2",
-        "vite": "^8.0.14"
-    },
-    "scripts": {
-        "start": "expo start",
-        "storybook": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
-        "storybook:web": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
-        "storybook:build": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
-        "android": "expo start --android",
-        "ios": "expo start --ios",
-        "web": "expo start --web",
-        "lint": "eslint .",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
-        "typecheck": "tsc --noEmit",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "validate": "npm run format:check && npm run lint && npm run typecheck && npm test -- --watch=false"
-    },
-    "jest": {
-        "preset": "jest-expo",
-        "setupFilesAfterEnv": [
-            "<rootDir>/jest.setup.ts"
-        ]
-    },
-    "private": true
+  "name": "react-native-template",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@rneui/themed": "^5.0.0",
+    "@supabase/supabase-js": "^2.106.2",
+    "expo": "~54.0.35",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-url-polyfill": "^3.0.0",
+    "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^10.4.1",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^29.5.14",
+    "@types/react": "~19.1.10",
+    "@vitejs/plugin-react": "^6.0.2",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.4",
+    "eslint-config-expo": "^10.0.0",
+    "jest-expo": "^54.0.17",
+    "prettier": "^3.8.3",
+    "react-test-renderer": "19.1.0",
+    "storybook": "^10.4.1",
+    "typescript": "~5.9.2",
+    "vite": "^8.0.14"
+  },
+  "scripts": {
+    "start": "expo start",
+    "storybook": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
+    "storybook:web": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
+    "storybook:build": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "validate": "npm run format:check && npm run lint && npm run typecheck && npm test -- --watch=false"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+    ]
+  },
+  "private": true
 }

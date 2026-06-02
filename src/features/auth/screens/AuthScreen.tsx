@@ -7,8 +7,9 @@
 import { useSignInWithEmail } from '../hooks/useSignInWithEmail';
 import { useSignUpWithEmail } from '../hooks/useSignUpWithEmail';
 import AuthForm from '../components/AuthForm';
+import KeyboardDismissView from '../../../shared/ui/components/KeyboardDismissView';
 import { Alert } from 'react-native';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export function AuthScreen() {
     const signIn = useSignInWithEmail();
@@ -20,6 +21,13 @@ export function AuthScreen() {
 
     async function handleSignUp(email: string, password: string) {
         await signUp.signUp(email, password);
+    }
+
+    // mode hooks
+    const [mode, setMode] = useState<'signIn' | 'signUp'>('signIn');
+
+    function handleModeChange(newMode: 'signIn' | 'signUp') {
+        setMode(newMode);
     }
 
     // Show an alert if there is an error or notice from either hook
@@ -42,10 +50,27 @@ export function AuthScreen() {
     }, [signUp.notice]);
 
     return (
-        <AuthForm
-            loading={signIn.loading || signUp.loading}
-            onSignIn={handleSignIn}
-            onSignUp={handleSignUp}
-        />
+        <KeyboardDismissView>
+            <AuthForm
+                loading={signIn.loading || signUp.loading}
+                onSignIn={handleSignIn}
+                onSignUp={handleSignUp}
+                onGoogleSignIn={() =>
+                    //TODO: implement google sign in flow
+                    Alert.alert('Google Sign In', 'Google sign in flow not implemented yet.')
+                }
+                onGoogleSignUp={() =>
+                    //TODO: implement google sign up flow
+                    Alert.alert('Google Sign Up', 'Google sign up flow not implemented yet.')
+                }
+                onForgotPassword={() =>
+                    Alert.alert('Forgot Password', 'Forgot password flow not implemented yet.')
+                }
+                onModeChange={handleModeChange}
+                mode={mode}
+                logoSource={require('../../../../assets/icon-set-v2/app-icon-256.png')}
+                googleIconSource={require('../../../../assets/auth/google-logo.png')}
+            />
+        </KeyboardDismissView>
     );
 }

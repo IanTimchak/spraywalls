@@ -20,6 +20,9 @@ export function useAuthSession(): AuthSession {
 
     useEffect(() => {
         async function refreshAuthClaims() {
+            // debug delay
+            //await new Promise((resolve) => setTimeout(resolve, 2500));
+
             const { data, error } = await getAuthClaims();
 
             if (error) {
