@@ -13,6 +13,9 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+// Feature flag behavior
+import { featureFlags } from '../../../config/featureFlags';
+
 import type { ImageSourcePropType } from 'react-native';
 
 type Props = {
@@ -110,7 +113,7 @@ export default function AuthForm({
                     </View>
 
                     {/* Forgot Password Link */}
-                    {mode === 'signIn' && (
+                    {mode === 'signIn' && featureFlags.passwordRecovery && (
                         <View style={styles.forgotPassword}>
                             <TouchableOpacity onPress={onForgotPassword}>
                                 <Text style={styles.forgotPasswordText}>Forgot password?</Text>
@@ -122,7 +125,7 @@ export default function AuthForm({
                     <View
                         style={[
                             styles.verticallySpaced,
-                            mode === 'signIn' ? styles.mt10 : styles.mt20,
+                            mode === 'signIn' ? styles.mt20 : styles.mt20,
                         ]}
                     >
                         <TouchableOpacity
@@ -150,21 +153,25 @@ export default function AuthForm({
                     </View>
 
                     {/* Future OAuth Providers */}
-                    <View style={styles.orDivider}>
-                        <View style={styles.orLine} />
-                        <Text style={styles.orText}>OR</Text>
-                        <View style={styles.orLine} />
-                    </View>
+                    {featureFlags.googleAuth && (
+                        <View style={styles.orDivider}>
+                            <View style={styles.orLine} />
+                            <Text style={styles.orText}>OR</Text>
+                            <View style={styles.orLine} />
+                        </View>
+                    )}
 
-                    <OAuthButton
-                        provider="Google"
-                        mode={mode}
-                        loading={loading}
-                        onPress={() => {
-                            mode === 'signIn' ? onGoogleSignIn?.() : onGoogleSignUp?.();
-                        }}
-                        iconSource={googleIconSource}
-                    />
+                    {featureFlags.googleAuth && (
+                        <OAuthButton
+                            provider="Google"
+                            mode={mode}
+                            loading={loading}
+                            onPress={() => {
+                                mode === 'signIn' ? onGoogleSignIn?.() : onGoogleSignUp?.();
+                            }}
+                            iconSource={googleIconSource}
+                        />
+                    )}
                 </View>
             </View>
         </View>
