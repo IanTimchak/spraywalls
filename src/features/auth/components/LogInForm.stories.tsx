@@ -7,6 +7,8 @@ const meta = {
     component: LogInForm,
     args: {
         loading: false,
+        email: '',
+        onEmailChange: () => {},
         onSignIn: () => {},
         onForgotPassword: () => {},
     },

@@ -1,7 +1,6 @@
 // features/auth/components/AuthForm.tsx
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, Image } from 'react-native';
 
 import { styles } from './authFormStyles';
 import AuthModeSwitch from './AuthModeSwitch';
@@ -39,15 +38,7 @@ export default function AuthForm({
     logoSource,
     googleIconSource,
 }: Props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-
-    //clears password field when transitioning mode
-    useEffect(() => {
-        setPassword('');
-        setShowPassword(false);
-    }, [mode]);
+    const [email, setEmail] = useState(''); // preserve email between forms for UX
 
     return (
         <View style={styles.container}>
@@ -63,11 +54,18 @@ export default function AuthForm({
                     {mode === 'signIn' ? (
                         <LogInForm
                             loading={loading}
+                            email={email}
+                            onEmailChange={setEmail}
                             onSignIn={onSignIn}
                             onForgotPassword={onForgotPassword}
                         />
                     ) : (
-                        <SignUpForm loading={loading} onSignUp={onSignUp} />
+                        <SignUpForm
+                            loading={loading}
+                            email={email}
+                            onEmailChange={setEmail}
+                            onSignUp={onSignUp}
+                        />
                     )}
 
                     {/* Future OAuth Providers */}

@@ -10,12 +10,19 @@ import { featureFlags } from '../../../config/featureFlags';
 
 type Props = {
     loading: boolean;
+    email: string;
+    onEmailChange: (email: string) => void;
     onSignIn: (email: string, password: string) => void | Promise<void>;
     onForgotPassword: () => void | Promise<void>;
 };
 
-export default function LogInForm({ loading, onSignIn, onForgotPassword }: Props) {
-    const [email, setEmail] = useState('');
+export default function LogInForm({
+    loading,
+    email,
+    onEmailChange,
+    onSignIn,
+    onForgotPassword,
+}: Props) {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
@@ -25,7 +32,7 @@ export default function LogInForm({ loading, onSignIn, onForgotPassword }: Props
             <View style={[styles.verticallySpaced, styles.mt30]}>
                 <Text style={styles.label}>Email</Text>
                 <TextInput
-                    onChangeText={(text) => setEmail(text)}
+                    onChangeText={(text) => onEmailChange(text)}
                     value={email}
                     placeholder="email@address.com"
                     autoCapitalize="none"

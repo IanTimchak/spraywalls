@@ -7,11 +7,12 @@ import { styles } from './authFormStyles';
 
 type Props = {
     loading: boolean;
+    email: string;
+    onEmailChange: (email: string) => void;
     onSignUp: (email: string, password: string) => void | Promise<void>;
 };
 
-export default function SignUpForm({ loading, onSignUp }: Props) {
-    const [email, setEmail] = useState('');
+export default function SignUpForm({ loading, email, onEmailChange, onSignUp }: Props) {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
@@ -21,7 +22,7 @@ export default function SignUpForm({ loading, onSignUp }: Props) {
             <View style={[styles.verticallySpaced, styles.mt30]}>
                 <Text style={styles.label}>Email</Text>
                 <TextInput
-                    onChangeText={(text) => setEmail(text)}
+                    onChangeText={(text) => onEmailChange(text)}
                     value={email}
                     placeholder="email@address.com"
                     autoCapitalize="none"

@@ -7,6 +7,8 @@ const meta = {
     component: SignUpForm,
     args: {
         loading: false,
+        email: '',
+        onEmailChange: () => {},
         onSignUp: () => {},
     },
 } satisfies Meta<typeof SignUpForm>;
