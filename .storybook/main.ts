@@ -1,4 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const storybookDir = dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
     stories: ['../src/**/*.stories.@(ts|tsx|js|jsx)'],
@@ -11,6 +15,7 @@ const config: StorybookConfig = {
         viteConfig.resolve.alias = {
             ...(viteConfig.resolve.alias as Record<string, string>),
             'react-native': 'react-native-web',
+            '@expo/vector-icons': resolve(storybookDir, './mocks/expoVectorIcons.tsx'),
         };
 
         viteConfig.define = {
