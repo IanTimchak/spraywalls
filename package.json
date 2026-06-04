@@ -40,6 +40,7 @@
         "storybook": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
         "storybook:web": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006 --host 0.0.0.0",
         "storybook:build": "cross-env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
+        "generate:story": "node scripts/generate-story.js",
         "android": "expo start --android",
         "ios": "expo start --ios",
         "web": "expo start --web",

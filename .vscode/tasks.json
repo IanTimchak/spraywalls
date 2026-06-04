@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Story For Active File",
+            "type": "process",
+            "command": "npm.cmd",
+            "args": ["run", "generate:story", "--", "${file}"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Story From Path",
+            "type": "process",
+            "command": "npm.cmd",
+            "args": ["run", "generate:story", "--", "${input:componentPath}"],
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "componentPath",
+            "type": "promptString",
+            "description": "Component file path",
+            "default": "src/features/auth/components/LogInForm.tsx"
+        }
+    ]
+}
