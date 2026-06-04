@@ -10,6 +10,7 @@ const meta = {
         email: '',
         onEmailChange: () => {},
         onSignUp: () => {},
+        signUpError: null,
     },
 } satisfies Meta<typeof SignUpForm>;
 

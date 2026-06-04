@@ -12,6 +12,7 @@ import LogInForm from './LogInForm';
 import { featureFlags } from '../../../config/featureFlags';
 
 import type { ImageSourcePropType } from 'react-native';
+import type { SignUpError } from '../types';
 
 type Props = {
     loading: boolean;
@@ -24,6 +25,8 @@ type Props = {
     mode: 'signIn' | 'signUp';
     logoSource: ImageSourcePropType;
     googleIconSource: ImageSourcePropType;
+    signUpError: SignUpError | null;
+    onClearSignUpError: () => void;
 };
 
 export default function AuthForm({
@@ -37,8 +40,24 @@ export default function AuthForm({
     mode,
     logoSource,
     googleIconSource,
+    signUpError,
+    onClearSignUpError,
 }: Props) {
     const [email, setEmail] = useState(''); // preserve email between forms for UX
+
+    // remember to clear form-state errors whenever there is a change
+    function handleEmailChange(nextEmail: string) {
+        if (signUpError?.field === 'email') {
+            onClearSignUpError();
+        }
+
+        setEmail(nextEmail);
+    }
+
+    function handleModeChange(nextMode: 'signIn' | 'signUp') {
+        onClearSignUpError();
+        onModeChange(nextMode);
+    }
 
     return (
         <View style={styles.container}>
@@ -47,7 +66,7 @@ export default function AuthForm({
                     {/* Logo and Mode Switch */}
                     <Image source={logoSource} style={[styles.logo, styles.mt30]} />
                     <View style={[styles.verticallySpaced, styles.mt30]}>
-                        <AuthModeSwitch mode={mode} onModeChange={onModeChange} />
+                        <AuthModeSwitch mode={mode} onModeChange={handleModeChange} />
                     </View>
 
                     {/* Form Components */}
@@ -55,7 +74,7 @@ export default function AuthForm({
                         <LogInForm
                             loading={loading}
                             email={email}
-                            onEmailChange={setEmail}
+                            onEmailChange={handleEmailChange}
                             onSignIn={onSignIn}
                             onForgotPassword={onForgotPassword}
                         />
@@ -63,8 +82,9 @@ export default function AuthForm({
                         <SignUpForm
                             loading={loading}
                             email={email}
-                            onEmailChange={setEmail}
+                            onEmailChange={handleEmailChange}
                             onSignUp={onSignUp}
+                            signUpError={signUpError}
                         />
                     )}
 
@@ -83,7 +103,11 @@ export default function AuthForm({
                             mode={mode}
                             loading={loading}
                             onPress={() => {
-                                mode === 'signIn' ? onGoogleSignIn?.() : onGoogleSignUp?.();
+                                if (mode === 'signIn') {
+                                    onGoogleSignIn?.();
+                                } else {
+                                    onGoogleSignUp?.();
+                                }
                             }}
                             iconSource={googleIconSource}
                         />
