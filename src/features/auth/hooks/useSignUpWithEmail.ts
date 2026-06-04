@@ -59,12 +59,6 @@ export function useSignUpWithEmail() {
                 return { status: 'error', error: signUpError };
             }
 
-            // If there isn't a session then the user needs to verify their email before signing in
-            if (!data.session) {
-                setNotice('Please check your inbox for email verification!');
-                return { status: 'verification-required', email };
-            }
-
             // If there is a session but no user, that's unexpected and we should handle it as an error
             if (!data.user) {
                 const signUpError: SignUpError = {
@@ -79,6 +73,17 @@ export function useSignUpWithEmail() {
                     status: 'error',
                     error: signUpError,
                 };
+            }
+
+            // If there isn't a session then the user needs to verify their email before signing in
+            // With email confirmations enabled, Supabase may return an obfuscated user
+            // for existing confirmed accounts instead of an error. In that setup, keep this
+            // notice neutral rather than trying to detect duplicate signups client-side.
+            if (!data.session) {
+                setNotice(
+                    'If this email can be registered, verification instructions will be sent. If you already have an account, sign in or reset your password.',
+                );
+                return { status: 'verification-required', email };
             }
 
             // Use user info for the return
