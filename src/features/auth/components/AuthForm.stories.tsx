@@ -17,6 +17,8 @@ const meta = {
         mode: 'signIn',
         logoSource: { uri: iconUrl },
         googleIconSource: { uri: googleIconUrl },
+        signUpError: null,
+        onClearSignUpError: () => {},
     },
 } satisfies Meta<typeof AuthForm>;
 

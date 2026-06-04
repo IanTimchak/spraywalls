@@ -30,16 +30,21 @@ export function AuthScreen() {
         setMode(newMode);
     }
 
-    // Show an alert if there is an error or notice from either hook
+    // Handle if there is an error or notice from either hook
     useEffect(() => {
         if (signIn.error) {
             Alert.alert('Sign In Error', signIn.error);
         }
     }, [signIn.error]);
 
+    // useEffect(() => {
+    //     if (signUp.error) {
+    //         Alert.alert('Sign Up Error', signUp.error);
+    //     }
+    // }, [signUp.error]);
     useEffect(() => {
-        if (signUp.error) {
-            Alert.alert('Sign Up Error', signUp.error);
+        if (signUp.error?.field === 'form') {
+            Alert.alert('Sign Up Error', signUp.error.message);
         }
     }, [signUp.error]);
 
@@ -70,6 +75,8 @@ export function AuthScreen() {
                 mode={mode}
                 logoSource={require('../../../../assets/icon-set-v2/app-icon-256.png')}
                 googleIconSource={require('../../../../assets/auth/google-logo.png')}
+                signUpError={signUp.error}
+                onClearSignUpError={signUp.clearError}
             />
         </KeyboardDismissView>
     );

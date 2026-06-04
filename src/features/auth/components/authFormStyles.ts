@@ -43,6 +43,7 @@ export const styles = StyleSheet.create({
         color: '#86939e',
         marginBottom: 6,
     },
+
     input: {
         borderWidth: 1,
         borderColor: '#86939e',
