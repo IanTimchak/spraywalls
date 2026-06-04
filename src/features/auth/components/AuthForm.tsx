@@ -1,5 +1,5 @@
 // features/auth/components/AuthForm.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 
 import { styles } from './authFormStyles';
